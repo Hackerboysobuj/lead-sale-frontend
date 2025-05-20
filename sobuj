@@ -1,0 +1,19 @@
+import zipfile
+import os
+
+# Define the path to the uploaded zip file and extraction directory
+zip_path = "/mnt/data/c5bcf8f8-7952-4ba2-8395-104a3f52d49c.zip"
+extract_dir = "/mnt/data/lead-sale-project"
+
+# Extract the zip file
+with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+    zip_ref.extractall(extract_dir)
+
+# List the contents of the extracted directory
+extracted_files = []
+for root, dirs, files in os.walk(extract_dir):
+    for file in files:
+        extracted_files.append(os.path.join(root, file))
+
+extracted_files[:20]  # Show a preview of the first 20 files extracted
+
